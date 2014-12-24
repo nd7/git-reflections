@@ -1,0 +1,79 @@
+lesson_2_reflections
+
+What happens when you initialize a repository? Why do you need to do it?
+	- When a repository is initialized then a hidden folder .git is created with some hidden files inside it
+	- A repository needs to be initialized so that git knows that a given set of files needs to be treated as a repository and then git becomes ready to keep track 
+	of changes in these files
+	
+If you accidentally add a file to the staging area, you can remove it using git reset. For example, if you accidentally add lesson_2_reflections.txt, but don’t want 
+it to be committed yet, run git reset lesson_2_reflections.txt and the file will be removed from the staging area, but it will still be in your working directory.
+
+Is git reset the same as git rm --cache
+	- In general they are not the same. git reset will remove changes to file from the staging area. This really means that you are resetting the state of the file in 
+	the staging area to be the same as in the most recent commit. You can think of git reset as the opposite of git add, since if you run git commit, that file will 
+	not be changed compared to the last commit. 
+	- git rm --cache will add a change to the staging area that deletes the file (but the file will not be deleted from your working directory). Then if you run git 
+	commit, that file will not be present in the new commit, even if it was present in the commit before.;
+	- In the case when your file is new, the two commands will have the same effect, since the most recent commit did not contain the file. However, in other cases 
+	they will be different.;
+	- In some versions of Git, you cannot run git reset before making a commit. To get around this, you can run git rm --cache instead. Since there are no commits yet, 
+	all files must be new, so the two commands will be equivalent in this case.;
+
+Concept Map: init, add, staging area
+	Weve introduced a few new concepts since we last revisited our concept map.;
+	git init
+	git add
+	git status
+	staging area
+	working directory	
+
+How is the staging area different from the working directory and the repository? What value do you think it offers?
+	- Staging Area is different from working directory and repository as it is an intermediate state between these two
+	- It helps to keep the commits logical by allowing to add any number files which ever make sense in a particular situation. 
+	- That way a user can have changes in multiple files and commit only those at a time which are logically related to keep the commit understandable
+
+git checkout master 
+	If HEAD is 'detached' when you checked out an old commit, running this command will fix that. 
+
+Fixing an error flow
+	git status
+		To idenitfy the commits which might have introduced an error
+	git diff id1 id2
+		To compare two diffs with each other
+	Edit the required file(s)
+	git status
+		To confirm which files have been modified 
+	git diff
+		To compare changes in working directory with staging area
+	git diff --staged
+		To compare changes in staging area and latest commit in repository
+
+git reset --hard
+	To get rid of changes from working directory and staging area; This is very dangerous command as the changes are not recoverbale. Remember to run git diff and 
+	git diff --staged before running this command
+
+How can you use the staging area to make sure you have one commit per logical change?
+	- By only adding those files to staging area which needs to be committed together
+
+git branch
+	Shows current branch
+git branch easy-mode
+	Create a branch named easy-mode	
+git checkout easy-mode
+	Switch to branch easy-mode
+
+What are some situations when branches would be helpful in keeping your history organized? How would branches help?
+	- When an experimental feature needs to be tried out
+	- When some changes are not directly related to core features e.g. supporting a foreign language like French
+	- When multiple teams are working on a project and whole project can be divided into a logical task per team 
+
+What is the result of merging two branches together? Why do we represent it in the diagram the way we do?
+	- After merge the reuslt is that the branch into which another branch is merged will have commits from both the branches and commits will show up
+	sorted by time
+	- We need to represent the merge and commits log in diagram to understand better that which commits belong to which branch
+
+What are the pros and cons of Git’s automatic merging vs. always doing merges manually?
+	- Automatic merge does not require any manuall work so it is easy as compared to Manual merge
+	- Automatic merge can not work in case when same lines or sections are changed in both branches, so manual merge is the only solution
+	in such situations
+	- Manual merge requires very careful comparison manually to avoid data loss, where as Automatic merge does the comparison on its own

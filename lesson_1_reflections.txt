@@ -1,0 +1,29 @@
+How did viewing a diff between two versions of a file help you see the bug that was introduced?
+	- Using diff two files were displayed side by side, so easier to view
+	- Differences were highlighted, so easy to pinpoint 
+
+How could having easy access to the entire history of a file make you a more efficient programmer in the long term?	
+	- Changes made to a file can help you understand the process of development
+	- History can help troubleshoot a scenario when an existing working feature is broken by some change
+	- Help to switch back to old version easily if new version is not really useful
+
+What do you think are the pros and cons of manually choosing when to create a commit, like you do in Git, vs having versions automatically saved, like Google docs does?
+	- Pros
+		- User can choose a logical point which will make sense when looked at to diff or in history
+		- Manageble history
+	- Cons
+		- Compared to auto-save feature, manual save require more attention other wise user might loose work
+
+Why do you think some version control systems, like Git, allow saving multiple files in one commit, while others, like Google Docs, treat each file separately?
+	- Becuase Git is mainly developed for code and it makes sense to keep history of multiple files together in each commit
+	- GDocs are mainly for documents 
+
+How can you use the commands git log and git diff to view the history of files?
+	- git log : can be used to view history of logs for each commit and changes. It will show the latest change at top with commit id,autohor,date and message.
+	- git diff : can be used to compare two commits via copying the commit ids from the logs and running git diff commitID1 commitID2
+
+How might using version control make you more confident to make changes that could break something?
+	- git checkout commitID can be used to resotre the whole repo to a specific version of the repo
+	- Even if a bug is introduced by mistake, user can revert to a known working state and then progressively move to latest builds to fiugre out where the bug was
+	introduced
+	- Before reverting back to a previous commit, do git log and note the commit ID of latest version
